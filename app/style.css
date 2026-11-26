@@ -1,0 +1,156 @@
+/* NusaData — original design. Deep teal + warm amber on a soft paper
+   background; system font stack only, no webfont, no network request. */
+:root {
+  --teal: #0f766e;
+  --teal-dark: #115e59;
+  --teal-soft: #ccfbf1;
+  --amber: #f59e0b;
+  --ink: #0f172a;
+  --muted: #64748b;
+  --line: #e2e8f0;
+  --paper: #f8fafc;
+  --card: #ffffff;
+  --radius: 14px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.6;
+}
+a { color: var(--teal); }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+header.site {
+  background: var(--teal-dark);
+  color: #fff;
+  padding: 18px 0 0;
+}
+.brand { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.brand h1 { margin: 0; font-size: 30px; letter-spacing: -0.5px; }
+.brand h1 span { color: var(--amber); }
+.brand p { margin: 0; color: #99f6e4; font-size: 14px; }
+nav.main { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 14px; padding-bottom: 0; }
+nav.main a {
+  color: #ccfbf1;
+  text-decoration: none;
+  padding: 9px 13px;
+  border-radius: 9px 9px 0 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+nav.main a:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+nav.main a.active { background: var(--paper); color: var(--teal-dark); }
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, var(--teal-dark), var(--teal));
+  color: #fff;
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 34px 30px 30px;
+  margin-bottom: 22px;
+}
+.hero h2 { margin: 0 0 8px; font-size: 28px; line-height: 1.25; }
+.hero p { margin: 0; color: #ccfbf1; max-width: 720px; }
+.hero .updated { margin-top: 12px; font-size: 13px; color: #99f6e4; }
+
+/* Cards and grids */
+.grid { display: grid; gap: 16px; }
+.grid.cols-6 { grid-template-columns: repeat(6, 1fr); }
+.grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+.card h3 { margin: 0 0 4px; font-size: 17px; }
+.card h3 .sub { display: block; font-size: 12px; color: var(--muted); font-weight: 400; }
+.stat .value { font-size: 24px; font-weight: 800; color: var(--teal-dark); line-height: 1.15; white-space: nowrap; }
+.stat .label { font-size: 13px; color: var(--muted); }
+.stat .src { font-size: 11px; color: var(--muted); }
+section.block { margin: 22px 0; }
+section.block > h2 { font-size: 21px; margin: 0 0 4px; }
+section.block > .lede { color: var(--muted); margin: 0 0 14px; font-size: 15px; }
+.src-note { font-size: 12px; color: var(--muted); margin-top: 10px; }
+.fact .value { font-size: 22px; font-weight: 800; color: var(--teal-dark); }
+.fact .label { font-size: 13px; color: var(--muted); }
+
+/* Year explorer */
+.year-bar { display: flex; gap: 6px; flex-wrap: wrap; margin: 10px 0 16px; }
+.year-bar button {
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 6px 13px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.year-bar button:hover { border-color: var(--teal); color: var(--teal); }
+.year-bar button.active { background: var(--teal); border-color: var(--teal); color: #fff; }
+
+/* Explore cards */
+.explore { text-decoration: none; color: inherit; display: block; }
+.explore:hover { border-color: var(--teal); }
+.explore .go { color: var(--teal); font-weight: 700; font-size: 13px; }
+
+/* Province table */
+.controls { display: flex; gap: 10px; flex-wrap: wrap; margin: 12px 0; }
+.controls input, .controls select {
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  font-size: 14px;
+  background: #fff;
+  color: var(--ink);
+}
+.controls input { flex: 1; min-width: 220px; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 640px; }
+th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line); }
+th { background: var(--teal-soft); color: var(--teal-dark); white-space: nowrap; }
+th button { background: none; border: 0; font: inherit; color: inherit; cursor: pointer; padding: 0; font-weight: 700; }
+th button:hover { text-decoration: underline; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+tbody tr:hover { background: #f0fdfa; }
+tfoot td { font-weight: 700; background: #f8fafc; }
+.empty { padding: 22px; text-align: center; color: var(--muted); }
+
+/* Donut + legend */
+.donut-wrap { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; }
+ul.legend { list-style: none; margin: 0; padding: 0; font-size: 13px; columns: 2; column-gap: 28px; }
+ul.legend li { margin: 3px 0; break-inside: avoid; }
+ul.legend .sw { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 7px; }
+ul.legend b { float: right; margin-left: 12px; }
+
+/* Method page */
+table.sources td:first-child { font-weight: 600; white-space: nowrap; }
+.note-box {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-size: 14px;
+}
+.note-box b { color: #92400e; }
+
+/* Footer */
+footer.site { margin: 34px 0 26px; padding-top: 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+footer.site a { color: var(--muted); }
+
+/* Phone layout */
+@media (max-width: 860px) {
+  .grid.cols-6 { grid-template-columns: repeat(2, 1fr); }
+  .grid.cols-3, .grid.cols-2 { grid-template-columns: 1fr; }
+  .hero h2 { font-size: 23px; }
+  .brand h1 { font-size: 25px; }
+  ul.legend { columns: 1; }
+  nav.main a { padding: 8px 9px; font-size: 13px; }
+}
